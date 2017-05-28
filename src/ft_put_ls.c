@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 15:47:11 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/28 20:37:28 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/28 21:01:14 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			ft_put_ls_files(t_my_stats *stats, int ac,
 	if (OPTL)
 	{
 		ft_blanks(stats, ac, blanks);
-		if (ac > 1)
+		if (ac > 1 && !OPTD)
 		{
 			ft_putstr_buf("total ");
 			ft_putnbr_buf(blocks);

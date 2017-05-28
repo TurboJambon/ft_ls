@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 18:25:55 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/28 19:39:55 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/28 21:03:52 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void			ft_norme_screw(char **avbis, t_uint flags, int start, int ac)
 {
 	ft_av_to_stats(avbis, flags, start);
-	ft_ls_folder(avbis + start, flags, ac - start);
+	if (OPTD)
+		ft_av_to_stats(avbis + start, flags, ac - start);
+	else
+		ft_ls_folder(avbis + start, flags, ac - start);
 }
 
 void			main_ac_zero(t_uint flags)
