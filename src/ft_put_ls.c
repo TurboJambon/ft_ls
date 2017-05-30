@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 15:47:11 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/30 15:26:01 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/30 15:53:42 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			ft_put_ls_files(t_my_stats *stats, int ac,
 	if (OPTL)
 	{
 		ft_blanks(stats, ac, blanks);
-		if (ac > 1)
+		if (ac > 2)
 		{
 			ft_putstr_buf("total ");
 			ft_putnbr_buf(blocks);
@@ -65,6 +65,8 @@ void			ft_put_ls_files(t_my_stats *stats, int ac,
 		else
 		{
 			ft_put_name(stats[i], stats[i].LS_MODE, flags);
+			if (OPTP && (stats[i].LS_MODE & S_IFDIR))
+				ft_putstr_buf("/");
 			ft_putchar_buf('\n');
 		}
 		i++;
