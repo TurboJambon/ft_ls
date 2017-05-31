@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 15:47:15 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/30 15:59:24 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/31 12:19:58 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void			ft_opendir(char **av, int ac, t_uint flags)
 		if (flag)
 			ft_putstr_buf("\n");
 		flag = 1;
-		if (ac > 2 && av[i][0] != '\0' && ft_strcmp(av[i], ".") != 0)
+		if (ac >= 1 && av[i][0] != '\0' && ft_strcmp(av[i], ".") != 0)
 		{
 			ft_putstr_buf(av[i]);
 			ft_putendl_buf(":");
