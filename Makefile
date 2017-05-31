@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/05 14:20:07 by dchirol           #+#    #+#              #
-#    Updated: 2017/05/28 18:29:29 by dchirol          ###   ########.fr        #
+#    Updated: 2017/05/31 12:05:47 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,10 @@ SRC =	src/ft_ls.c src/main.c	src/utilities.c	src/sorting.c 	\
 		src/others.c
 
 CC = gcc
+
+LIB_PATH	=	libft
+LIB			=	$(LIB_PATH)/libft.a
+
 ifeq ($(DEBUG), true)
 	CFLAGS = -I includes -g
 else
@@ -32,12 +36,18 @@ OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : lib $(OBJ)
 	@gcc -o $@ $^ libft.a
 
+lib:
+	make -C $(LIB_PATH)
+
 clean:
+	make -C $(LIB_PATH) clean
 	/bin/rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(LIB)
+	rm -f $(NAME)
 
 re : clean all
