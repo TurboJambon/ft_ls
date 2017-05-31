@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/05 14:20:07 by dchirol           #+#    #+#              #
-#    Updated: 2017/05/31 12:05:47 by dchirol          ###   ########.fr        #
+#    Updated: 2017/05/31 12:09:06 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ else
 endif
 OBJ = $(SRC:.c=.o)
 
-all : $(NAME)
+all : lib $(NAME)
 
-$(NAME) : lib $(OBJ)
-	@gcc -o $@ $^ libft.a
+$(NAME): $(OBJ)
+	@gcc -o $@ $^ $(LIB)
 
 lib:
 	make -C $(LIB_PATH)
