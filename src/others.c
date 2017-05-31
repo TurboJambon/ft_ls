@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 18:25:55 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/30 16:06:27 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/31 14:13:15 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void			ft_norme_screw(char **avbis, t_uint flags, int start, int ac)
 	else
 	{
 		ft_av_to_stats(avbis, flags, start);
-		ft_putchar_buf('\n');
 		ft_ls_folder(avbis + start, flags, ac - start);
 	}
 }

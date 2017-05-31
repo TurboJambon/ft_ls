@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:01:54 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/30 15:51:25 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/05/31 14:14:49 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int				ft_ls_folder(char **av, t_uint flags, int ac)
 	if (!OPTF)
 		ft_sorts_folder(av, infos, ac, flags);
 	ft_opendir(av, ac, flags);
-	ft_buf(0, NULL, -1);
 	free(infos);
 	return (1);
 }
