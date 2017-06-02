@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 11:56:36 by David             #+#    #+#             */
-/*   Updated: 2017/06/02 12:01:09 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:10:14 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			fill_tab(t_uint **tab)
 {
 	if (!(*tab = (t_uint*)malloc(sizeof(**tab) * 127)))
-		exit(0);
+		ft_malloc_error();
 	ft_bzero(*tab, 127 * 4);
 	(*tab)['l'] = LSL;
 	(*tab)['a'] = LSA;
@@ -48,4 +48,21 @@ void			get_flags(char *av, t_uint *flags)
 		}
 		av++;
 	}
+}
+
+char			*get_name(char *path)
+{
+	char	*name;
+
+	name = ft_strrchr(path, '/');
+	if (name == NULL)
+		return (path);
+	else
+		return (name + 1);
+}
+
+void			ft_malloc_error(void)
+{
+	ft_putstr_fd("Malloc error\n", 2);
+	exit(0);
 }

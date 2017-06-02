@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:01:13 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/01 13:28:59 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 14:57:27 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int				ft_av_to_stats(char **av, t_uint flags, int start)
 	t_my_stats	*my_stats;
 
 	if (!(my_stats = malloc(sizeof(*my_stats) * start)))
-		exit(0);
+		ft_malloc_error();
 	ft_fill_name(av, my_stats, &start, flags);
 	ft_ls_file(my_stats, flags, start);
 	ft_free_spe(my_stats, start);
@@ -58,7 +58,7 @@ void			sort_params(char **av, int ac, t_uint flags)
 	char		**avbis;
 
 	if (!(avbis = (char **)malloc(sizeof(*avbis) * ac)))
-		return ;
+		ft_malloc_error();
 	param_sorter(av, avbis, ac, flags);
 	free(avbis);
 }

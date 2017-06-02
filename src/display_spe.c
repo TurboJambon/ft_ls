@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 21:26:26 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 14:15:40 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:07:09 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void		ft_putdev(dev_t rdev, int *blanks)
 {
+	ft_putchar_buf(' ');
 	ft_putnbrblanks_buf(rdev >> 24, blanks[4]);
-	ft_putstr_buf(",");
+	ft_putstr_buf(", ");
 	ft_putnbrblanks_buf(rdev & 0xfff, blanks[5]);
 }
 
@@ -26,8 +27,11 @@ void		ft_putstrblanks_buf(char *str, int blanks)
 
 	size = ft_strlen(str);
 	ft_buf(1, str, size);
-	ft_memset(space, ' ', blanks - size);
-	ft_buf(1, space, blanks - size);
+	if (blanks - size > 0)
+	{
+		ft_memset(space, ' ', blanks - size);
+		ft_buf(1, space, blanks - size);
+	}
 }
 
 void		ft_putnbrblanks_buf(int nbr, int blanks)
@@ -36,8 +40,11 @@ void		ft_putnbrblanks_buf(int nbr, int blanks)
 	char	space[blanks];
 
 	size = ft_nblen(nbr);
-	ft_memset(space, ' ', blanks - size);
-	ft_buf(1, space, blanks - size);
+	if (blanks - size > 0)
+	{
+		ft_memset(space, ' ', blanks - size);
+		ft_buf(1, space, blanks - size);
+	}
 	ft_putnbr_buf(nbr);
 }
 

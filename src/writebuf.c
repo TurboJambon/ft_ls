@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 16:56:55 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 16:09:47 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 14:58:03 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int			ft_if(int fd, int size, t_uchar **buf, int *p)
 	if (!*buf)
 	{
 		if (!(*buf = (t_uchar *)malloc(sizeof(**buf) * 100000)))
-			ft_putendl_buf("error malloc in ft_buf");
+			ft_malloc_error();
 	}
 	if (size == -1)
 	{
@@ -76,7 +76,16 @@ int					ft_buf(int fd, void *str, int size)
 {
 	static t_uchar	*buf = NULL;
 	static int		p = 0;
+	static int		savefd = -1;
 
+	if (savefd == -1)
+		savefd = fd;
+	if (savefd != fd)
+	{
+		write(savefd, buf, p);
+		p = 0;
+		savefd = fd;
+	}
 	if (!ft_if(fd, size, &buf, &p))
 		return (p);
 	if (size > 100000)

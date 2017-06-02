@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 21:31:52 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/28 18:50:27 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 14:57:14 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_stat		*fill_folder_infos(char **av, int ac)
 	t_stat			*infos;
 
 	if (!(infos = (t_stat*)malloc(sizeof(t_stat) * ac)))
-		return (NULL);
+		ft_malloc_error();
 	i = 0;
 	while (i < ac)
 	{

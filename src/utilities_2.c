@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 21:29:04 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/01 13:24:19 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 14:57:50 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char			*ft_strjoin_ls(char *s1, char *s2)
 	size1 = ft_strlen(s1);
 	size2 = ft_strlen(s2);
 	if (!(ret = (char *)malloc(sizeof(*ret) * (size1 + size2 + 2))))
-		ft_putstr_buf("error malloc in ft_strjoin_ls");
+		ft_malloc_error();
 	ft_memcpy(ret, s1, size1);
 	ret[size1] = '/';
 	ft_memcpy(ret + size1 + 1, s2, size2);

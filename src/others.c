@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 18:25:55 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/02 11:47:08 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:07:53 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			ft_blanks_2(t_my_stats *stats, int *blanks, int i)
 			blanks[4] = tmp;
 		tmp = ft_nblen(stats[i].dev & 0xfff);
 		if (tmp > blanks[5])
-			blanks[5] = tmp;
+			blanks[5] = tmp + 1;
 	}
 }
 
@@ -87,6 +87,6 @@ void			ft_blanks(t_my_stats *stats, int ac, int *blanks)
 		ft_blanks_2(stats, blanks, i);
 		i++;
 	}
-	if (blanks[4] + blanks[5] + 1 > blanks[3])
-		blanks[3] = blanks[4] + 1 + blanks[5];
+	if (blanks[4] + blanks[5] + 3 > blanks[3])
+		blanks[3] = blanks[4] + 3 + blanks[5];
 }

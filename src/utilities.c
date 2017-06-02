@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 18:37:16 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/02 12:00:30 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 14:57:45 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char			**put_dot(void)
 	char **point;
 
 	if (!(point = (char**)malloc(sizeof(char*) * 1)))
-		exit(0);
+		ft_malloc_error();
 	point[0] = ft_strdup(".");
 	return (point);
 }

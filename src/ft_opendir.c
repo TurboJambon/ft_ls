@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 15:47:15 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/02 11:50:57 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:20:04 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_realloc_av(t_opendir *opendir)
 
 	opendir->maxp *= 10;
 	if (!(tmp = (char**)malloc(sizeof(char*) * (opendir->maxp))))
-		exit(0);
+		ft_malloc_error();
 	ft_memmove(tmp, COUCOUILLE, (sizeof(char**) * opendir->maxp) / 10);
 	free(COUCOUILLE);
 	COUCOUILLE = tmp;
@@ -30,7 +30,7 @@ void			ft_realloc_mystats(t_opendir *opendir)
 
 	opendir->maxw *= 10;
 	if (!(tmp = (t_my_stats*)malloc(sizeof(t_my_stats) * (opendir->maxw))))
-		exit(0);
+		ft_malloc_error();
 	ft_memmove(tmp, SPOUPS, (sizeof(t_my_stats) * opendir->maxw) / 10);
 	free(SPOUPS);
 	SPOUPS = tmp;
@@ -76,12 +76,12 @@ void			ft_opendir_2(char **av, t_uint flags, DIR *dir, int i)
 	opendir.spoups = NULL;
 	if (!(opendir.spoups =
 		(t_my_stats*)malloc(sizeof(*opendir.spoups) * 100)))
-		exit(0);
+		ft_malloc_error();
 	opendir.coucouille = NULL;
 	if (OPTRM)
 		if (!(opendir.coucouille =
 			(char**)malloc(sizeof(*opendir.coucouille) * 100)))
-			exit(0);
+			ft_malloc_error();
 	opendir.dir = dir;
 	ft_opendir_3(av, flags, i, &opendir);
 	closedir(opendir.dir);
@@ -100,7 +100,7 @@ void			ft_opendir(char **av, int ac, t_uint flags)
 	i = 0;
 	while (i < ac)
 	{
-		if (ac >= 1 && av[i][0] != '\0')
+		if ((ac > 1 || OPTRM) && av[i][0] != '\0')
 		{
 			if (flag)
 				ft_putstr_buf("\n");
@@ -111,7 +111,7 @@ void			ft_opendir(char **av, int ac, t_uint flags)
 		if ((dir = opendir(av[i])))
 			ft_opendir_2(av, flags, dir, i);
 		else
-			ft_put_error(av[i]);
+			ft_put_error(get_name(av[i]));
 		i++;
 	}
 }

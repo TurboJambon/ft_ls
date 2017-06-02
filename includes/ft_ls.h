@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:58:20 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/02 12:04:31 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:10:19 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,7 @@ int				ft_av_to_stats(char **av, t_uint flags, int start);
 void			ft_forbidden(char *str);
 void			ft_norme_screw(char **avbis, t_uint flags, int start, int ac);
 void			ft_opendir_optrm(t_opendir *opendir, t_uint flags);
+char			*get_name(char *path);
+void			ft_malloc_error(void);
 
 #endif

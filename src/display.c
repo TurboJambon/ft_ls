@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 21:38:22 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 15:46:15 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 15:00:45 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		ft_put_name(t_my_stats stat, mode_t mode, t_uint flags)
 			ft_putstr_buf(vtype[mode >> 12]);
 	}
 	ft_putstr_buf(stat.name);
+	ft_putstr_buf(RESET);
 	if (OPTP && (mode & S_IFDIR))
 		ft_putstr_buf("/");
-	ft_putstr_buf(RESET);
 }
