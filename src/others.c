@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 18:25:55 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 18:19:03 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 11:47:08 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			ft_norme_screw(char **avbis, t_uint flags, int start, int ac)
 	else
 	{
 		ft_av_to_stats(avbis, flags, start);
-		if (start != 0)
+		if (start != ac && ac != 1)
 			ft_putchar_buf('\n');
 		ft_ls_folder(avbis + start, flags, ac - start);
 	}
@@ -35,6 +35,17 @@ void			main_ac_zero(t_uint flags)
 		ft_ls_folder((dot = put_dot()), flags, 1);
 	free(dot[0]);
 	free(dot);
+}
+
+void			ft_opendir_optrm(t_opendir *opendir, t_uint flags)
+{
+	static int	flag = 1;
+
+	if (flag)
+		ft_putchar_buf('\n');
+	flag = 0;
+	ft_ls_folder(opendir->coucouille, flags, opendir->p);
+	ft_free_stat(opendir->coucouille, opendir->p);
 }
 
 void			ft_blanks_2(t_my_stats *stats, int *blanks, int i)

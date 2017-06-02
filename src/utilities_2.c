@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 21:29:04 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/30 15:25:53 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/01 13:24:19 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			ft_free_spe(t_my_stats *stats, int ac)
 	free(stats);
 }
 
-void			ft_free(t_my_stats *stats, int ac)
+void			ft_free(t_my_stats *stats, int ac, t_uint flags)
 {
 	int i;
 
@@ -65,8 +65,11 @@ void			ft_free(t_my_stats *stats, int ac)
 	{
 		free(stats[i].name);
 		free(stats[i].path);
-		free(stats[i].gid);
-		free(stats[i].uid);
+		if (OPTL)
+		{
+			free(stats[i].gid);
+			free(stats[i].uid);
+		}
 		i++;
 	}
 	free(stats);

@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:58:20 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/28 20:24:05 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 12:04:31 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void			ft_putnbr_buf(int n);
 void			ft_putendl_buf_fd(char *str, int fd);
 
 int				ft_buf(int fd, void *str, int size);
-void			ft_free(t_my_stats *stats, int ac);
+void			ft_free(t_my_stats *stats, int ac, t_uint flags);
 void			ft_free_stat(char **av, int ac);
 char			**put_dot();
 int				ft_nblen(int nb);
@@ -173,5 +173,6 @@ void			main_ac_zero(t_uint flags);
 int				ft_av_to_stats(char **av, t_uint flags, int start);
 void			ft_forbidden(char *str);
 void			ft_norme_screw(char **avbis, t_uint flags, int start, int ac);
+void			ft_opendir_optrm(t_opendir *opendir, t_uint flags);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 15:47:15 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 18:17:03 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/02 11:50:57 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			ft_opendir_3(char **av, t_uint flags, int i, t_opendir *opendir)
 
 void			ft_opendir_2(char **av, t_uint flags, DIR *dir, int i)
 {
-	t_opendir opendir;
+	t_opendir	opendir;
 
 	opendir.maxp = 100;
 	opendir.maxw = 100;
@@ -86,12 +86,9 @@ void			ft_opendir_2(char **av, t_uint flags, DIR *dir, int i)
 	ft_opendir_3(av, flags, i, &opendir);
 	closedir(opendir.dir);
 	ft_ls_file(opendir.spoups, flags, opendir.w);
-	ft_free(opendir.spoups, opendir.w);
+	ft_free(opendir.spoups, opendir.w, flags);
 	if (OPTRM)
-	{
-		ft_ls_folder(opendir.coucouille, flags, opendir.p);
-		ft_free_stat(opendir.coucouille, opendir.p);
-	}
+		ft_opendir_optrm(&opendir, flags);
 }
 
 void			ft_opendir(char **av, int ac, t_uint flags)
@@ -103,7 +100,7 @@ void			ft_opendir(char **av, int ac, t_uint flags)
 	i = 0;
 	while (i < ac)
 	{
-		if (ac >= 1 && av[i][0] != '\0' && ft_strcmp(av[i], ".") != 0)
+		if (ac >= 1 && av[i][0] != '\0')
 		{
 			if (flag)
 				ft_putstr_buf("\n");

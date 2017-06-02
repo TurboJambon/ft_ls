@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:01:13 by dchirol           #+#    #+#             */
-/*   Updated: 2017/05/31 18:18:11 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/01 13:28:59 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int				ft_av_to_stats(char **av, t_uint flags, int start)
 {
 	t_my_stats	*my_stats;
 
-	my_stats = malloc(sizeof(*my_stats) * start);
+	if (!(my_stats = malloc(sizeof(*my_stats) * start)))
+		exit(0);
 	ft_fill_name(av, my_stats, &start, flags);
 	ft_ls_file(my_stats, flags, start);
 	ft_free_spe(my_stats, start);
@@ -78,23 +79,23 @@ int				main(int ac, char **av)
 {
 	static t_uint	flags = 0;
 	static int		i = 1;
+	char			**dot;
 
-	if (ac < 2)
-		ft_ls_folder(put_dot(), flags, ac);
-	else
+	while (i < ac && av[i][0] == '-' && av[i][1] != '\0')
 	{
-		while (i < ac && av[i][0] == '-' && av[i][1] != '\0')
-		{
-			get_flags(av[i] + 1, &flags);
-			i++;
-		}
-		av += i;
-		ac -= i;
-		if (ac == 0)
-			main_ac_zero(flags);
-		else
-			sort_params(av, ac, flags);
+		get_flags(av[i] + 1, &flags);
+		i++;
 	}
+	av += i;
+	ac -= i;
+	if (ac == 0)
+	{
+		sort_params((dot = put_dot()), 1, flags);
+		free(dot[0]);
+		free(dot);
+	}
+	else
+		sort_params(av, ac, flags);
 	ft_buf(1, NULL, -1);
 	return (0);
 }
